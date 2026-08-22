@@ -2,6 +2,8 @@
 
 Docker image for [Baikal](https://sabre.io/baikal/) (CalDAV/CardDAV server), built on `nginx` + `php-fpm`.
 
+Available on Docker Hub: [guillaumelepape/baikal](https://hub.docker.com/r/guillaumelepape/baikal)
+
 ## Volumes
 
 | Container path                | Purpose                                                              | Required |
