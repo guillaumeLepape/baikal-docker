@@ -1,0 +1,36 @@
+name: Build
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - uses: docker/setup-buildx-action@v4.3.0
+
+      - name: Build image
+        uses: docker/build-push-action@v7.3.0
+        with:
+          context: .
+          push: false
+          load: true
+          tags: baikal:ci
+
+      - name: Smoke test
+        run: |
+          docker run -d --name baikal-ci -p 8080:80 baikal:ci
+          for i in $(seq 1 15); do
+            code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/ || true)
+            if [ "$code" = "302" ]; then
+              echo "Got HTTP $code, container is serving requests"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "Container never became healthy"
+          docker logs baikal-ci
+          exit 1
