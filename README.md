@@ -7,6 +7,7 @@ Docker image for [Baikal](https://sabre.io/baikal/) (CalDAV/CardDAV server), bui
 [![Docker Image Version](https://img.shields.io/docker/v/guillaumelepape/baikal?sort=semver)](https://hub.docker.com/r/guillaumelepape/baikal)
 
 Available on Docker Hub: [guillaumelepape/baikal](https://hub.docker.com/r/guillaumelepape/baikal)
+Source on GitHub: [guillaumeLepape/baikal-docker](https://github.com/guillaumeLepape/baikal-docker)
 
 ## Volumes
 
