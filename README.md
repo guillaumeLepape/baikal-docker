@@ -39,7 +39,7 @@ Keep this file's host-side permissions restrictive (e.g. `chmod 600`) since it c
 ```yaml
 services:
   baikal:
-    image: docker.io/glepape/baikal:latest
+    image: docker.io/guillaumelepape/baikal:latest
     container_name: baikal
     restart: unless-stopped
     ports:
