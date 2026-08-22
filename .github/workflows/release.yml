@@ -48,6 +48,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           repository: guillaumelepape/baikal
+          short-description: ${{ github.event.repository.description }}
 
       - name: Create GitHub release
         uses: softprops/action-gh-release@v3.0.2
