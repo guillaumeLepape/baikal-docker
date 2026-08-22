@@ -58,3 +58,7 @@ services:
 ```
 
 On first run, visit `http://localhost:8080/admin/` to complete the Baikal setup wizard.
+
+## Tags
+
+Images are tagged `<baikal-version>.<build-number>`, e.g. `0.12.1.0` — the first three parts match the upstream [Baikal release](https://github.com/sabre-io/Baikal/releases). `latest` always points at the most recent tag.
