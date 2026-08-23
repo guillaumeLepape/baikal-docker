@@ -3,8 +3,7 @@
 # ===========================
 FROM alpine AS builder
 
-# renovate: datasource=github-releases depName=sabre-io/Baikal
-ARG BAIKAL_VERSION=0.12.1
+ARG BAIKAL_VERSION
 
 ADD https://github.com/sabre-io/Baikal/releases/download/$BAIKAL_VERSION/baikal-$BAIKAL_VERSION.zip .
 RUN apk add unzip && unzip -q baikal-$BAIKAL_VERSION.zip
