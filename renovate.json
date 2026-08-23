@@ -6,7 +6,7 @@
       "customType": "regex",
       "managerFilePatterns": ["/^versions\\.env$/"],
       "matchStrings": [
-        "^BAIKAL_VERSION=(?<currentValue>.*)$"
+        "^BAIKAL_VERSION=(?<currentValue>\\S+)"
       ],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "sabre-io/Baikal"
