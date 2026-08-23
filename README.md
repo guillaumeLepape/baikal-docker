@@ -7,6 +7,7 @@ Docker image for [Baikal](https://sabre.io/baikal/) (CalDAV/CardDAV server), bui
 [![Docker Image Version](https://img.shields.io/docker/v/guillaumelepape/baikal?sort=semver)](https://hub.docker.com/r/guillaumelepape/baikal)
 
 Available on Docker Hub: [guillaumelepape/baikal](https://hub.docker.com/r/guillaumelepape/baikal)
+
 Source on GitHub: [guillaumeLepape/baikal-docker](https://github.com/guillaumeLepape/baikal-docker)
 
 ## Volumes
@@ -62,3 +63,7 @@ On first run, visit `http://localhost:8080/admin/` to complete the Baikal setup 
 ## Tags
 
 Images are tagged `<baikal-version>.<build-number>`, e.g. `0.12.1.0` — the first three parts match the upstream [Baikal release](https://github.com/sabre-io/Baikal/releases). `latest` always points at the most recent tag.
+
+## Dependencies
+
+Upstream Baikal releases and GitHub Actions versions are kept current via [Renovate](https://docs.renovatebot.com/).
