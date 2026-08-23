@@ -2,8 +2,13 @@ name: Release
 
 on:
   push:
-    tags:
-      - "*.*.*.*"
+    branches: [main]
+    paths:
+      - versions.env
+
+concurrency:
+  group: release
+  cancel-in-progress: false
 
 jobs:
   release:
@@ -13,13 +18,19 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Derive BAIKAL_VERSION from tag
-        id: version
+      - name: Read versions.env
+        id: versions
+        run: grep -v '^#' versions.env | grep -v '^$' >> "$GITHUB_OUTPUT"
+
+      - name: Tag commit
+        id: tag
         run: |
-          TAG="${GITHUB_REF_NAME}"
-          BAIKAL_VERSION="${TAG%.*}"
+          TAG="${{ steps.versions.outputs.BAIKAL_VERSION }}.${{ steps.versions.outputs.BUILD_VERSION }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag "$TAG"
+          git push origin "$TAG"
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
-          echo "baikal_version=$BAIKAL_VERSION" >> "$GITHUB_OUTPUT"
 
       - uses: docker/setup-qemu-action@96fe6ef7f33517b61c61be40b68a1882f3264fb8 # v4.2.0
 
@@ -37,9 +48,9 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           build-args: |
-            BAIKAL_VERSION=${{ steps.version.outputs.baikal_version }}
+            BAIKAL_VERSION=${{ steps.versions.outputs.BAIKAL_VERSION }}
           tags: |
-            guillaumelepape/baikal:${{ steps.version.outputs.tag }}
+            guillaumelepape/baikal:${{ steps.tag.outputs.tag }}
             guillaumelepape/baikal:latest
 
       - name: Update Docker Hub description
@@ -53,4 +64,5 @@ jobs:
       - name: Create GitHub release
         uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3.0.2
         with:
+          tag_name: ${{ steps.tag.outputs.tag }}
           generate_release_notes: true
