@@ -11,5 +11,16 @@
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "sabre-io/Baikal"
     }
+  ],
+  "packageRules": [
+    {
+      "matchDepNames": ["sabre-io/Baikal"],
+      "postUpgradeTasks": {
+        "commands": ["sed -i 's/^BUILD_VERSION=.*/BUILD_VERSION=0/' versions.env"],
+        "fileFilters": ["versions.env"],
+        "executionMode": "branch"
+      }
+    }
   ]
 }
+
