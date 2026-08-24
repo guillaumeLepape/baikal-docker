@@ -2,9 +2,12 @@
 
 Docker image for [Baikal](https://sabre.io/baikal/) (CalDAV/CardDAV server), built on `nginx` + `php-fpm`.
 
+Automatically rebuilt and published to Docker Hub whenever a new upstream Baikal version is released.
+
 [![Docker Pulls](https://img.shields.io/docker/pulls/guillaumelepape/baikal)](https://hub.docker.com/r/guillaumelepape/baikal)
 [![Docker Image Size](https://img.shields.io/docker/image-size/guillaumelepape/baikal/latest)](https://hub.docker.com/r/guillaumelepape/baikal)
 [![Docker Image Version](https://img.shields.io/docker/v/guillaumelepape/baikal?sort=semver)](https://hub.docker.com/r/guillaumelepape/baikal)
+[![Latest Image Published](https://img.shields.io/docker/last-updated/guillaumelepape/baikal)](https://hub.docker.com/r/guillaumelepape/baikal/tags)
 
 Available on Docker Hub: [guillaumelepape/baikal](https://hub.docker.com/r/guillaumelepape/baikal)
 
