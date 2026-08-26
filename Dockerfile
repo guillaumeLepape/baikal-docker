@@ -1,7 +1,7 @@
 # ===========================
 # 1️⃣ Build Stage
 # ===========================
-FROM alpine AS builder
+FROM docker.io/library/alpine AS builder
 
 ARG BAIKAL_VERSION
 
@@ -11,7 +11,7 @@ RUN apk add unzip && unzip -q baikal-$BAIKAL_VERSION.zip
 # ===========================
 # 2️⃣ Runtime Stage
 # ===========================
-FROM nginx:1.31.4-alpine3.24
+FROM docker.io/library/nginx:1.31.4-alpine3.24
 
 # Install dependencies: PHP & SQLite3
 RUN apk add --no-cache      \
