@@ -51,6 +51,7 @@ jobs:
             BAIKAL_VERSION=${{ steps.versions.outputs.BAIKAL_VERSION }}
           tags: |
             guillaumelepape/baikal:${{ steps.tag.outputs.tag }}
+            guillaumelepape/baikal:${{ steps.versions.outputs.BAIKAL_VERSION }}
             guillaumelepape/baikal:latest
 
       - name: Update Docker Hub description
