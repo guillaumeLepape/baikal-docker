@@ -65,7 +65,7 @@ On first run, visit `http://localhost:8080/admin/` to complete the Baikal setup 
 
 ## Tags & releases
 
-Images are tagged `<baikal-version>.<build-number>`, e.g. `0.12.1.0` — the first three parts match the upstream [Baikal release](https://github.com/sabre-io/Baikal/releases). `latest` always points at the most recent tag.
+Images are tagged `<baikal-version>.<build-number>`, e.g. `0.12.1.0`, and also receive the three-part upstream version tag, e.g. `0.12.1`. `latest` always points at the most recent build.
 
 [versions.env](versions.env) is the single source of truth for these values. Editing and merging it to `main` triggers a release: [.github/workflows/release.yml](.github/workflows/release.yml) tags the commit `BAIKAL_VERSION.BUILD_VERSION`, builds and pushes a multi-arch (amd64/arm64) image to Docker Hub, updates the Docker Hub description, and creates a GitHub Release.
 
