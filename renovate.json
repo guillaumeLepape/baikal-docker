@@ -12,6 +12,9 @@
       "depNameTemplate": "sabre-io/Baikal"
     }
   ],
+  "lockFileMaintenance": {
+    "enabled": true
+  },
   "packageRules": [
     {
       "matchDepNames": ["sabre-io/Baikal"],
