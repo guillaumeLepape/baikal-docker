@@ -20,7 +20,14 @@
         "fileFilters": ["versions.env"],
         "executionMode": "branch"
       }
+    },
+    {
+      "matchManagers": ["dockerfile"],
+      "postUpgradeTasks": {
+        "commands": ["sed -i -E 's/^BUILD_VERSION=([0-9]+)/echo BUILD_VERSION=$((\\1+1))/e' versions.env"],
+        "fileFilters": ["versions.env"],
+        "executionMode": "branch"
+      }
     }
   ]
 }
-
