@@ -33,6 +33,7 @@ RUN apk add --no-cache      \
     php83-session          \
     sqlite                 \
     msmtp                  \
+    supervisor             \
     ca-certificates        &&\
   ln -sf /usr/bin/msmtp /usr/sbin/sendmail &&\
   sed -i \
@@ -46,7 +47,10 @@ RUN apk add --no-cache      \
 
 COPY --from=builder --chown=nginx:nginx baikal /var/www/baikal
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY supervisord.conf /etc/supervisord.conf
 COPY --chmod=755 docker-entrypoint.d/ /docker-entrypoint.d/
+
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
 
 VOLUME /var/www/baikal/config
 VOLUME /var/www/baikal/Specific
