@@ -46,6 +46,7 @@ RUN apk add --no-cache      \
 
 COPY --from=builder --chown=nginx:nginx baikal /var/www/baikal
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY baikal.png /etc/nginx/favicon.png
 COPY --chmod=755 docker-entrypoint.d/ /docker-entrypoint.d/
 
 VOLUME /var/www/baikal/config
