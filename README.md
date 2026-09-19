@@ -13,6 +13,14 @@ Available on Docker Hub: [guillaumelepape/baikal](https://hub.docker.com/r/guill
 
 Source on GitHub: [guillaumeLepape/baikal-docker](https://github.com/guillaumeLepape/baikal-docker)
 
+## Fork notice
+
+This project is a fork of [ckulka/baikal-docker](https://github.com/ckulka/baikal-docker/tree/master). Credit and thanks to the original author and contributors.
+
+## License
+
+[MIT](LICENSE), as upstream.
+
 ## Volumes
 
 | Container path                | Purpose                                                              | Required |
