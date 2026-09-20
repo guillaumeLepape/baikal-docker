@@ -1,7 +1,4 @@
 #!/bin/sh
 
-# Ensure correct file permissions, unless behaviour is explicitly disabled
-if [ -z ${BAIKAL_SKIP_CHOWN+x} ]
-then
-  chown -R nginx:nginx /var/www/baikal
-fi
+# Ensure the mounted volumes are writable by the nginx user
+chown -R nginx:nginx /var/www/baikal/config /var/www/baikal/Specific

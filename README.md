@@ -53,6 +53,17 @@ password       your-smtp-password
 
 Keep this file's host-side permissions restrictive (e.g. `chmod 600`) since it contains SMTP credentials.
 
+## User and group IDs
+
+Baikal runs as the `nginx` user (`101:101` by default). When bind-mounting the volumes, set `PUID` and `PGID` to the owner of the host directories so Baikal can write to them:
+
+| Variable | Purpose                                     | Default |
+| -------- | ------------------------------------------- | ------- |
+| `PUID`   | User ID of the account Baikal runs as       | `101`   |
+| `PGID`   | Group ID of the account Baikal runs as      | `101`   |
+
+At startup the container also changes the ownership of `/var/www/baikal/config` and `/var/www/baikal/Specific` to that user, so the files on the host are re-owned accordingly.
+
 ## docker-compose example
 
 ```yaml
@@ -63,6 +74,9 @@ services:
     restart: unless-stopped
     ports:
       - "8080:80"
+    environment:
+      - PUID=1000
+      - PGID=1000
     volumes:
       - ./data/config:/var/www/baikal/config
       - ./data/specific:/var/www/baikal/Specific
